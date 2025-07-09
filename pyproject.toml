@@ -1,0 +1,10 @@
+[project]
+name = "lectrick"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.2.1",
+    "pillow>=11.3.0",
+    "regex>=2024.11.6",
+]
