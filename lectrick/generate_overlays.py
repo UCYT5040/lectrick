@@ -17,7 +17,7 @@ def generate_overlays(char):
     print("Red: Expected to be empty space")
     print("Green: Expected to be filled space")
     print("Blue: Actual pixel data")
-    print("Blue-Red (purple): Pixel data is there, but unexpected")
+    print("Blue-Red (magenta): Pixel data is there, but unexpected")
     print("Blue-Green (cyan): Pixel data is present, and is expected")
     char_file_safe = char
     char_img = char_image(char)
