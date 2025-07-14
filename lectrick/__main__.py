@@ -1,9 +1,12 @@
 from click import group, option, argument
-from lookup import lookup_character
-from generate_overlays import generate_overlays as generate_overlays_  # To avoid conflict with the option name
-from reverse_lookup import reverse_lookup as reverse_lookup_
-from generate_svgs import generate_svgs as generate_svgs_
-from map_program import map_program
+
+from .generate_overlays import generate_overlays as generate_overlays_  # To avoid conflict with the option name
+from .generate_shapes import generate_shapes as generate_shapes_
+from .lookup import lookup_character
+from .map_program import map_program
+from .reverse_lookup import reverse_lookup as reverse_lookup_
+from .run import run_program as run_program_
+
 
 @group()
 def lectrick():
@@ -41,10 +44,13 @@ def reverse_lookup(target_shape, char_range, min_strength):
         if strength >= min_strength:
             print(f"'{char}' (strength: {strength:.2f})")
 
-@lectrick.command('generate-svgs')
-def generate_svgs():
-    """Generate SVG files for all shapes in the shapes directory."""
-    generate_svgs_()
+
+@lectrick.command('generate-shapes')
+@option('--generate-each-character', is_flag=True, help='Generate individual character images for each shape.')
+def generate_shapes(generate_each_character):
+    """Generate PNG & SVG files for all shapes in the shapes directory."""
+    generate_shapes_(generate_each_character)
+
 
 @lectrick.command('map')
 @argument('program')
