@@ -1,9 +1,9 @@
 from .base import Tile
 
 
-class OneWayLeftTile(Tile):
-    TILE_TYPE = "ONE WAY LEFT"
-    SAMPLE_CHARS = ["<"]
+class OneWayRightTile(Tile):
+    TILE_TYPE = "ONE WAY RIGHT"
+    SAMPLE_CHARS = [">"]
 
     def __init__(self, x, y, tiles):
         super().__init__(x, y, tiles)
@@ -26,7 +26,7 @@ class OneWayLeftTile(Tile):
         if amount <= 0:
             return
         # Send energy to the right
-        target_x = self.x - 1
+        target_x = self.x + 1
         target_y = self.y
         try:
             tile_index = self.tiles.index((target_x, target_y))
