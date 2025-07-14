@@ -49,6 +49,12 @@ Outputs `hello`.
 
 ![Program with annotations explaining how it works](programs/hello.png)
 
+### `programs/chars`
+
+Outputs all characters from `255` to `0`, looping back to `255` after reaching `0`.
+
+![Program with annotations explaining how it works](programs/chars.png)
+
 ## Actions
 
 ### What do these images mean?
