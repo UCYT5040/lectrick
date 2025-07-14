@@ -6,11 +6,13 @@ from .lookup import lookup_character
 from .map_program import map_program
 from .reverse_lookup import reverse_lookup as reverse_lookup_
 from .run import run_program as run_program_
+from .watch import watch
 
 
 @group()
 def lectrick():
     pass
+
 
 @lectrick.command('lookup')
 @argument('character')
@@ -28,6 +30,7 @@ def lookup(character, generate_overlays):
         print(f"No matches found for '{character}'.")
     if generate_overlays:
         generate_overlays_(character)
+
 
 @lectrick.command('reverse-lookup')
 @argument('target_shape')
@@ -67,5 +70,55 @@ def map_command(program, output):
     else:
         print("No actions mapped from the program.")
 
-if __name__ == '__main__':
+
+@lectrick.command('run')
+@argument('program')
+@option('--visualize', is_flag=True, help='Visualize the program execution.')
+@option('--visualize-width', default=10, type=int, help='Width of tile names in visualization.')
+@option('--pause', default=0, type=float, help='Pause duration between frames in seconds.')
+def run_program(program, visualize, visualize_width, pause):
+    """Map a program to its corresponding actions."""
+    with open(program, 'r', encoding='utf-8') as f:
+        result = f.read()
+    if result:
+        run_program_(result, visualize=visualize, visualize_width=visualize_width, pause=pause)
+        print("Program executed successfully.")
+
+
+@lectrick.command('chr')
+@argument('numeric_value', type=int)
+def chr_command(numeric_value):
+    """Convert a numeric value to its corresponding character."""
+    try:
+        character = chr(numeric_value)
+        print(f"Character for {numeric_value}: '{character}'")
+    except ValueError:
+        print(f"Invalid numeric value: {numeric_value}. Must be in the range of valid Unicode code points.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+@lectrick.command('ord')
+@argument('character')
+def ord_command(character):
+    """Convert a character to its corresponding numeric value."""
+    if len(character) != 1:
+        print("Please provide a single character.")
+        return
+    numeric_value = ord(character)
+    print(f"Numeric value for '{character}': {numeric_value}")
+
+
+@lectrick.command('watch')
+@argument('file_path')
+def watch_command(file_path):
+    """Outputs the contents of a file whenever it changes."""
+    watch(file_path)
+
+
+def main():
     lectrick()
+
+
+if __name__ == '__main__':
+    main()

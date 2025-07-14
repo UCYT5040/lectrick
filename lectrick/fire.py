@@ -1,0 +1,2 @@
+class FireException(Exception):
+    pass

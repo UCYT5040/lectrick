@@ -1,10 +1,7 @@
-from json import load as json_load
-from os import listdir
-from os.path import isfile, join
 from typing import Union
 
-from char_image import char_image
-from compare import compare_character
+from .compare import compare_character
+from .tiles import list_tile_types
 
 DIRECTORY = 'shapes'
 
@@ -21,19 +18,15 @@ def reverse_lookup(target_shape: list[str], char_range: Union[tuple[int, int], i
 
     for char_num in range(char_min, char_max + 1):
         char = chr(char_num)
-        char_img = char_image(char)
 
-        json_files = [f for f in listdir(DIRECTORY) if isfile(join(DIRECTORY, f)) and f.endswith('.json')]
         max_similarity = -1
         best_match = None
 
-        for json_file in json_files:
-            with open(join(DIRECTORY, json_file), 'r') as file:
-                data = json_load(file)
-            similarity = compare_character(char_img, data['shape'], data.get('bias'))
+        for tile in list_tile_types():
+            similarity = compare_character(char, tile)
             if similarity > max_similarity:
                 max_similarity = similarity
-                best_match = data['identifier']
+                best_match = tile
 
         if best_match == target_shape:
             yield char, max_similarity

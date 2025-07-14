@@ -1,26 +1,28 @@
 from PIL import ImageFont
 
-FONTS = [
-    "C:/Windows/Fonts/consola.ttf",
-    "/System/Library/Fonts/Menlo.ttc",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
-]
+from fontTools.ttLib import TTFont
 
-font = None
+FONT_FILES = ["NotoSans-Regular.ttf", "NotoSansSymbols-Regular.ttf", "NotoSansSymbols2-Regular.ttf"]
+FONT_SIZE = 48
+
+# We map fontTools fonts to PIL fonts
+# When the program needs a font, we first check which fontTools font supports the character
+# Then, we return the corresponding PIL font
+
+ft_fonts = {}
+pil_fonts = {}
+
+for font in FONT_FILES:
+    ft_font = TTFont(font)
+    ft_fonts[font] = ft_font
+    pil_font = ImageFont.truetype(font, FONT_SIZE)
+    pil_fonts[font] = pil_font
 
 
-def get_font(font_index):
-    try:
-        return ImageFont.truetype(FONTS[font_index], 16)
-    except IOError:
-        return None
-
-
-i = 0
-while font is None and i < len(FONTS):
-    font = get_font(i)
-    i += 1
-
-if font is None:
-    font = ImageFont.load_default()
-    print("Warning: No suitable font found, using default font. This font is non-monospaced and may work unexpectedly.")
+def get_font_for_character(character):
+    for font_name, ft_font in ft_fonts.items():
+        if len(character) != 1:
+            return ImageFont.load_default()
+        if ft_font.getBestCmap().get(ord(character)):
+            return pil_fonts[font_name]
+    return ImageFont.load_default()

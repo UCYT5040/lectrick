@@ -1,24 +1,15 @@
-from json import load as json_load
-from os import listdir
-from os.path import isfile, join
-
-from char_image import char_image
-from compare import compare_character
+from .compare import compare_character
+from .tiles import list_tile_types
 
 DIRECTORY = 'shapes'
 
 
 def lookup_character(character, list_strengths=False):
-    char_img = char_image(character)
     results = []
-    json_files = [f for f in listdir(DIRECTORY) if isfile(join(DIRECTORY, f)) and f.endswith('.json')]
 
-    for json_file in json_files:
-        with open(join(DIRECTORY, json_file), 'r') as file:
-            data = json_load(file)
-        shape = data['shape']
-        similarity = compare_character(char_img, shape, data.get('bias'))
-        results.append((data['identifier'], similarity))
+    for tile in list_tile_types():
+        similarity = compare_character(character, tile)
+        results.append((tile, similarity))
 
     results.sort(key=lambda x: x[1], reverse=True)
 

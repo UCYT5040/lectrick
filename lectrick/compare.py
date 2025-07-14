@@ -1,31 +1,44 @@
-from PIL import Image
+from PIL import Image, ImageDraw
+from numpy import array as np_array, sum as np_sum, abs as np_abs, float64 as np_float64
+
+from .crop_image import crop_image
+from .font import get_font_for_character
 
 
-def compare_character(char: Image, shape: list[str], bias: float = 0.0) -> float:
-    if bias is None: bias = 0.0  # Bias is usually provided from dict.get(), which returns None, so check for that
+def compare_character(char: str, shape_name: str) -> float:
+    try:
+        shape_path = f"shapes/{shape_name}.png"
+        shape_image = Image.open(shape_path).convert('L')
+    except FileNotFoundError:
+        return 0.0
 
-    width = len(shape[0])
-    height = len(shape)
+    font = get_font_for_character(char)
+    bbox = font.getbbox(char)
 
-    char = char.resize((width * 2, height * 2))
+    if not (bbox and bbox[2] > bbox[0] and bbox[3] > bbox[1]):
+        return 0.0
 
-    char_data = char.load()
+    char_width, char_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
 
-    similarity = 0
+    char_image = Image.new('L', (char_width, char_height), 255)
+    draw = ImageDraw.Draw(char_image)
+    draw.text((-bbox[0], -bbox[1]), char, font=font, fill=0)
 
-    for y in range(height):
-        for x in range(width):
-            pixel_data = 255 * 4
-            for dy in range(2):
-                for dx in range(2):
-                    pixel_data -= char_data[x * 2 + dx, y * 2 + dy]
-            if pixel_data >= 255 and shape[y][x] == '#':
-                similarity += pixel_data
-            elif pixel_data < 255 and shape[y][x] == ' ':
-                similarity += 1
-            elif pixel_data < 255 and shape[y][x] == '#':
-                similarity -= pixel_data  # Penalty for mismatches
+    char_image = crop_image(char_image)
 
-    final_similarity = similarity / (width * height * 128) + bias
+    char_image = char_image.resize(shape_image.size, Image.Resampling.LANCZOS)
 
-    return final_similarity if final_similarity > 0 else 0.0
+    shape_array = np_array(shape_image, dtype=np_float64)
+    char_array = np_array(char_image, dtype=np_float64)
+
+    pixel_diff = np_sum(np_abs(shape_array - char_array))
+
+    max_diff = shape_image.width * shape_image.height * 255.0
+    if max_diff == 0:
+        return 1.0
+
+    dissimilarity = pixel_diff / max_diff
+
+    similarity = 1.0 - dissimilarity
+
+    return similarity
