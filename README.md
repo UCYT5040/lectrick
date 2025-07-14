@@ -65,31 +65,31 @@ heights.
 
 ### HORIZONTAL WIRE
 
-![HORIZONTAL WIRE](shapes/HORIZONTAL%20WIRE.svg)
+<img src="shapes/HORIZONTAL%20WIRE.svg" width="25%" alt="HORIZONTAL WIRE"/>
 
 Electricity flows horizontally.
 
 ### VERTICAL WIRE
 
-![VERTICAL WIRE](shapes/VERTICAL%20WIRE.svg)
+<img src="shapes/VERTICAL%20WIRE.svg" width="25%" alt="VERTICAL WIRE"/>
 
 Electricity flows vertically.
 
 ### CROSS WIRE
 
-![CROSS WIRE](shapes/CROSS%20WIRE.svg)
+<img src="shapes/CROSS%20WIRE.svg" width="25%" alt="CROSS WIRE"/>
 
 Electricity input in one direction flows out the other three directions, split evenly.
 
 ### POWER SOURCE
 
-![POWER SOURCE](shapes/POWER%20SOURCE.svg)
+<img src="shapes/POWER%20SOURCE.svg" width="25%" alt="POWER SOURCE"/>
 
 Electricity flows out in all directions. 255 LE is split evenly between the four directions.
 
 ### LIGHT BLOCK
 
-![LIGHT BLOCK](shapes/LIGHT%20BLOCK.svg)
+<img src="shapes/LIGHT%20BLOCK.svg" width="25%" alt="LIGHT BLOCK"/>
 
 When electricity flows into a light block, a character is printed. The character is determined by the amount of LE.
 
@@ -103,15 +103,13 @@ This can act as a form of error handling, as colliding power results in a fire.
 
 #### ONE WAY LEFT
 
-![ONE WAY LEFT](shapes/ONE%20WAY%20LEFT.svg)
+<img src="shapes/ONE%20WAY%20LEFT.svg" width="25%" alt="ONE WAY LEFT"/>
 
 #### ONE WAY RIGHT
 
-![ONE WAY RIGHT](shapes/ONE%20WAY%20RIGHT.svg)
+<img src="shapes/ONE%20WAY%20RIGHT.svg" width="25%" alt="ONE WAY RIGHT"/>
 
 ### SPLIT/DOUBLE
-
-![SPLIT](shapes/SPLIT.svg)
 
 Any electricity flowing into a split will be divided or multiplied by 2.
 
@@ -120,11 +118,11 @@ outputs the result in all three directions.
 
 #### SPLIT
 
-![SPLIT](shapes/SPLIT.svg)
+<img src="shapes/SPLIT.svg" width="25%" alt="SPLIT" />
 
 #### DOUBLE
 
-![DOUBLE](shapes/DOUBLE.svg)
+<img src="shapes/DOUBLE.svg" width="25%" alt="DOUBLE" />
 
 ### INCREMENT/DECREMENT
 
@@ -134,11 +132,11 @@ If the value goes below 0 or above 255, it will be overflow, wrapping around to 
 
 #### INCREMENT
 
-![INCREMENT](shapes/INCREMENT.svg)
+<img src="shapes/INCREMENT.svg" width="25%" alt="INCREMENT" />
 
 #### DECREMENT
 
-![DECREMENT](shapes/DECREMENT.svg)
+<img src="shapes/DECREMENT.svg" width="25%" alt="DECREMENT" />
 
 ## Commands
 
