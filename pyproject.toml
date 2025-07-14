@@ -8,3 +8,13 @@ dependencies = [
     "pillow>=11.3.0",
     "regex>=2024.11.6",
 ]
+
+[project.scripts]
+main = "lectrick.__main__:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools]
+packages = ["lectrick"]
+
