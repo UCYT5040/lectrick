@@ -14,4 +14,4 @@ class LightBlock(OneWayTile):
     def end_turn(self):
         if self.current_input:
             amount, source_x, source_y = self.current_input
-            print(chr(amount), end="")
+            print(chr(amount), end="", flush=True)

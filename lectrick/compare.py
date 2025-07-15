@@ -1,9 +1,9 @@
 from PIL import Image, ImageDraw
-from numpy import array as np_array, sum as np_sum, abs as np_abs, float64 as np_float64
+from numpy import array as np_array, float64 as np_float64
+from skimage.metrics import structural_similarity as ssim
 
 from .crop_image import crop_image
 from .font import get_font_for_character
-
 
 def compare_character(char: str, shape_name: str) -> float:
     try:
@@ -31,14 +31,12 @@ def compare_character(char: str, shape_name: str) -> float:
     shape_array = np_array(shape_image, dtype=np_float64)
     char_array = np_array(char_image, dtype=np_float64)
 
-    pixel_diff = np_sum(np_abs(shape_array - char_array))
+    # get similarity
+    try:
+        score = ssim(shape_array, char_array, data_range=255)
+    except Exception:
+        return 0.0
 
-    max_diff = shape_image.width * shape_image.height * 255.0
-    if max_diff == 0:
-        return 1.0
-
-    dissimilarity = pixel_diff / max_diff
-
-    similarity = 1.0 - dissimilarity
-
+    similarity = max(0.0, score)
+    
     return similarity

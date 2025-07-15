@@ -1,8 +1,8 @@
 [project]
 name = "lectrick"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.13"
+description = "Lectrick is an esoteric programming language."
+requires-python = ">=3.11,<3.14"
 dependencies = [
     "click>=8.2.1",
     "fonttools>=4.58.5",
