@@ -58,20 +58,30 @@ def generate_shapes(generate_each_character):
     generate_shapes_(generate_each_character)
 
 
-@lectrick.command('map')
-@argument('program')
-@option('--output', default='mapped_program.csv', help='Output file for the mapped program.')
-def map_command(program, output):
+def map_command_impl(program, output, return_out=False):
     """Map a program to its corresponding actions."""
     with open(program, 'r', encoding='utf-8') as f:
         result = map_program(f.read())
     if result:
-        with open(output, 'w') as f:
+        if return_out:
+            return_str = ""
             for line in result:
-                f.write(f"{','.join(line)}\n")
-        print(f"Mapped program saved to {output}.")
+                return_str += f"{','.join(line)}\n"
+            return return_str
+        else:
+            with open(output, 'w') as f:
+                for line in result:
+                    f.write(f"{','.join(line)}\n")
+            print(f"Mapped program saved to {output}.")
     else:
-        print("No actions mapped from the program.")
+        return None
+
+@lectrick.command('map')
+@argument('program')
+@option('--output', default='mapped_program.csv', help='Output file for the mapped program.')
+def map_command(program, output):
+    # make it callable from cli and tests
+    map_command_impl(program, output, return_out=False)
 
 
 @lectrick.command('run')

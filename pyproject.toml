@@ -11,6 +11,9 @@ dependencies = [
     "regex>=2024.11.6",
 ]
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [project.scripts]
 main = "lectrick.__main__:main"
 
