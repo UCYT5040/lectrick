@@ -34,14 +34,17 @@ def lookup(character, generate_overlays):
 
 @lectrick.command('reverse-lookup')
 @argument('target_shape')
-@option('--char-range', default='100', help='Character range to search (e.g., 100, 50-100).')
+@option('--char-range', default='100', help='Character range to search (e.g., 100, 50-100, or \'clean\').')
 @option('--min-strength', default=0.0, type=float, help='Minimum strength for a match to be considered.')
 def reverse_lookup(target_shape, char_range, min_strength):
     """Find characters that would perform the given action when used."""
     if '-' in char_range:
         char_range = tuple(map(int, char_range.split('-')))
     else:
-        char_range = int(char_range)
+        try:
+            char_range = int(char_range)
+        except ValueError:
+            pass  # Assume it's a predefined range name
     for result in reverse_lookup_(target_shape, char_range):
         char, strength = result
         if strength >= min_strength:
