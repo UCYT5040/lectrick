@@ -25,7 +25,4 @@ class Decrement(OneWayTile):
                     tile_index = self.tiles.index((target_x, target_y))
                 except ValueError:
                     continue
-                amount -= 1
-                if amount < 0:
-                    amount = 255
-                self.tiles[tile_index].accept_energy(amount, self.x, self.y)
+                self.tiles[tile_index].accept_energy((amount-1) % 256, self.x, self.y)
