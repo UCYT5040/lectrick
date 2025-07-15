@@ -25,4 +25,4 @@ class Split(OneWayTile):
                     tile_index = self.tiles.index((target_x, target_y))
                 except ValueError:
                     continue
-                self.tiles[tile_index].accept_energy(amount * 2 % 255, self.x, self.y)
+                self.tiles[tile_index].accept_energy(amount * 2 % 256, self.x, self.y)
