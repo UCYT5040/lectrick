@@ -41,19 +41,19 @@ Careful! If you connect two sources of power together, they will set on fire, ca
 
 Check out one-way actions to prevent this.
 
-## Sample Programs
+## Examples
 
-### `programs/hello`
+### `examples/hello`
 
 Outputs `hello`.
 
-![Program with annotations explaining how it works](programs/hello.png)
+![Program with annotations explaining how it works](examples/hello.png)
 
-### `programs/chars`
+### `examples/chars`
 
 Outputs all characters from `255` to `0`, looping back to `255` after reaching `0`.
 
-![Program with annotations explaining how it works](programs/chars.png)
+![Program with annotations explaining how it works](examples/chars.png)
 
 ## Actions
 
