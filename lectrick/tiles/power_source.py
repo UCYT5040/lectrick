@@ -14,7 +14,7 @@ class PowerSource(Tile):
         if not self.has_sent_power:
             for dx in range(-1, 2):
                 for dy in range(-1, 2):
-                    if dx == 0 and dy == 0:
+                    if (dx == 0 and dy == 0) or (dx != 0 and dy != 0):
                         continue
                     target_x = self.x + dx
                     target_y = self.y + dy
