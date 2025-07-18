@@ -1,7 +1,7 @@
 import {OneWayBase} from './oneWayBase';
 
 export class LightBlockTile extends OneWayBase {
-    TILE_TYPE = '"LIGHT BLOCK';
+    TILE_TYPE = 'LIGHT BLOCK';
     SAMPLE_CHARS = ["⬛", "⯀", "◼", "▮"];
 
     constructor(ctx: ExecutionContext, x: number, y: number) {
