@@ -1,4 +1,4 @@
-import {OneWayBase} from './base';
+import {OneWayBase} from './oneWayBase';
 
 class CrossWireTile extends OneWayBase {
     TILE_TYPE = 'CROSS WIRE';
