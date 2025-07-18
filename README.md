@@ -172,6 +172,12 @@ prevent it from starting a fire.
 
 A clock outputs electricity every second.
 
+### INFINITE POWER SOURCE
+
+<img src="shapes/INFINITE%20POWER%20SOURCE.svg" width="25%" alt="INFINITE POWER SOURCE"/>
+
+This infinite power source outputs 255 LE every turn. The POWER SOURCE only outputs 255 LE once, and then it stops.
+
 ## Commands
 
 Before running, make sure you have `uv` installed. If you have Python, grab it with:
