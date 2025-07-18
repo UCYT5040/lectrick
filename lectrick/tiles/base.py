@@ -22,11 +22,11 @@ class Tile:
     def accept_energy(self, amount, source_x, source_y):
         pass  # To be implemented in subclasses
 
-    def start_turn(self):
+    def start_turn(self, *args, **kwargs):
         pass  # To be implemented in subclasses
 
-    def end_turn(self):
+    def end_turn(self, *args, **kwargs):
         pass  # To be implemented in subclasses
 
-    def advance_turn(self):
+    def advance_turn(self, *args, **kwargs):
         pass  # To be implemented in subclasses

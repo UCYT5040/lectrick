@@ -13,7 +13,7 @@ class HorizontalWire(OneWayTile):
             return False
         return True
 
-    def start_turn(self):
+    def start_turn(self, *args, **kwargs):
         if self.current_input:
             amount, source_x, source_y = self.current_input
             if source_x < self.x:

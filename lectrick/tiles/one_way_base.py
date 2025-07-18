@@ -22,6 +22,6 @@ class OneWayTile(Tile):
                 f"FIRE: Tile {self.TILE_TYPE} at {self.x}, {self.y} already has pending input ({self.pending_input}). Source: ({source_x}, {source_y})")
         self.pending_input = (amount, source_x, source_y)
 
-    def advance_turn(self):
+    def advance_turn(self, *args, **kwargs):
         self.current_input = self.pending_input
         self.pending_input = None

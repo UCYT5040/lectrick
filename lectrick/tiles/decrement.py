@@ -8,7 +8,7 @@ class Decrement(OneWayTile):
     def __init__(self, x, y, tiles):
         super().__init__(x, y, tiles)
 
-    def start_turn(self):
+    def start_turn(self, *args, **kwargs):
         if not self.current_input:
             return
         amount, source_x, source_y = self.current_input

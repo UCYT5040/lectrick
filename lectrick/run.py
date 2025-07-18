@@ -1,13 +1,46 @@
+import sys
 from os import system as os_system
 from platform import system as platform_system
 from time import sleep
+from typing import Optional
 
 from .map_program import map_program
 from .tiles import create_tile
 
+if sys.platform == "win32":
+    import msvcrt
+else:
+    import select
+    import sys
+    import termios
+    import tty
+
 COLOR_YELLOW = "\033[93m"
 COLOR_RED = "\033[91m"
 COLOR_RESET = "\033[0m"
+
+
+class ExecutionContext:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def get_pressed_key() -> Optional[int]:
+        if sys.platform == "win32":
+            if msvcrt.kbhit():
+                return ord(msvcrt.getch())
+            return None
+        else:
+            fd = sys.stdin.fileno()
+            old_settings = termios.tcgetattr(fd)
+            try:
+                tty.setraw(sys.stdin.fileno())
+                rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+                if rlist:
+                    return ord(sys.stdin.read(1))
+                return None
+            finally:
+                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
 
 def clear_screen():
@@ -45,15 +78,15 @@ def visualize_tiles(tiles, turn, visualize_width):
         print(" | ".join(line))
 
 
-def execute_frame(tiles, turn, visualize, visualize_width):
+def execute_frame(tiles, turn, execution_context, visualize, visualize_width):
     for tile in tiles:
-        tile.start_turn()
+        tile.start_turn(execution_context)
     if visualize: visualize_tiles(tiles, turn, visualize_width)
     for tile in tiles:
-        tile.end_turn()
+        tile.end_turn(execution_context)
     if visualize: visualize_tiles(tiles, turn, visualize_width)
     for tile in tiles:
-        tile.advance_turn()
+        tile.advance_turn(execution_context)
     if visualize: visualize_tiles(tiles, turn, visualize_width)
 
 
@@ -65,8 +98,10 @@ def run_program(program, visualize, visualize_width, pause):
             tiles.append(create_tile(tile_type, x, y, tiles))
 
     turn = 0
+    execution_context = ExecutionContext()
+
     while True:
-        execute_frame(tiles, turn, visualize, visualize_width)
+        execute_frame(tiles, turn, execution_context, visualize, visualize_width)
         turn += 1
         if pause > 0:
             sleep(pause)

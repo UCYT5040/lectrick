@@ -15,11 +15,11 @@ class OneWayLeftTile(Tile):
             return
         self.pending_input = amount
 
-    def advance_turn(self):
+    def advance_turn(self, *args, **kwargs):
         self.current_input = self.pending_input
         self.pending_input = None
 
-    def start_turn(self):
+    def start_turn(self, *args, **kwargs):
         if not self.current_input:
             return
         amount = self.current_input

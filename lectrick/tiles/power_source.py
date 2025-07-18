@@ -10,7 +10,7 @@ class PowerSource(Tile):
         super().__init__(x, y, tiles)
         self.has_sent_power = False
 
-    def start_turn(self):
+    def start_turn(self, *args, **kwargs):
         if not self.has_sent_power:
             for dx in range(-1, 2):
                 for dy in range(-1, 2):
