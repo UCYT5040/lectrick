@@ -1,4 +1,4 @@
-import {getCharacterImage} from "./characterImage";
+import {getCharacterImage} from "./charImage";
 import {createCanvas} from "./canvas";
 
 const SHAPES_PATH = "copied/shapes/";
