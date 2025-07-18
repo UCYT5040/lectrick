@@ -17,7 +17,7 @@ def test_examples():
         mapped = map_command_impl(example, "", return_out=True)
         alternate_engine_mapped = map_command_impl(example, "", return_out=True, alternate_engine=True)
         if alternate_engine_mapped:  # If this fails, it will only warn, not fail the test
-            with open(f"{example}_alternate.csv", "r") as map:
+            with open(f"{example}.csv", "r") as map:
                 if alternate_engine_mapped != map.read():
                     log.warning(f"Alternate engine mapping for {example} does not match expected output.")
         else:
