@@ -150,6 +150,13 @@ If the value goes below 0 or above 255, it will be overflow, wrapping around to 
 
 Electricity flows horizontally only if the wire also receives vertical electricity (top or bottom) that turn.
 
+### PRESS DETECTOR
+
+<img src="shapes/PRESS%20DETECTOR.svg" width="25%" alt="PRESS DETECTOR"/>
+
+Electricity flows out of a press detector when the user presses a key. The amount of electricity output depends on the
+key pressed.
+
 ## Commands
 
 Before running, make sure you have `uv` installed. If you have Python, grab it with:
