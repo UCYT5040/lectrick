@@ -1,4 +1,4 @@
-import {Tile} from './tile';
+import {Tile} from './base';
 
 class ClockTile extends Tile {
     TILE_TYPE = 'CLOCK';

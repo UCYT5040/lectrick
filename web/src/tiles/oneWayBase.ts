@@ -1,6 +1,6 @@
-import {Tile} from "./tile";
+import {Tile} from "./base";
 
-type Input = [number, number, number]; // [amount, x, y]
+export type Input = [number, number, number]; // [amount, x, y]
 
 class OneWayBase extends Tile {
     pendingInput: Input | null;
