@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 log = logging.getLogger(__name__)
     
 def test_examples():
-    example_paths = ["examples/chars", "examples/hello"]
+    example_paths = ["examples/chars", "examples/hello", "examples/quiet"]
     
     for example in example_paths:
         mapped = map_command_impl(example, "", return_out=True)

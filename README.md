@@ -55,6 +55,12 @@ Outputs all characters from `255` to `0`, looping back to `255` after reaching `
 
 ![Program with annotations explaining how it works](examples/chars.png)
 
+### `examples/quiet`
+
+Outputs a character every second, unless the user presses a key, in which case it outputs nothing (it is quiet).
+
+![Program with annotations explaining how it works](examples/quiet.png)
+
 ## Actions
 
 ### What do these images mean?
