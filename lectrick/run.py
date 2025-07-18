@@ -21,11 +21,15 @@ COLOR_RESET = "\033[0m"
 
 
 class ExecutionContext:
+    PRESS_TIMEOUT = 0.2  # seconds, estimated keyboard repeat delay
+
     def __init__(self):
         self.start_time = time()
+        self.pressed_key = None
+        self.pressed_key_time = None
 
     @staticmethod
-    def get_pressed_key() -> Optional[int]:
+    def _get_pressed_key() -> Optional[int]:
         if sys.platform == "win32":
             if msvcrt.kbhit():
                 return ord(msvcrt.getch())
@@ -44,6 +48,18 @@ class ExecutionContext:
 
     def get_time(self):
         return time() - self.start_time
+
+    def get_pressed_key(self) -> Optional[int]:
+        current_key = self._get_pressed_key()
+        if current_key is not None:
+            if self.pressed_key is None or current_key != self.pressed_key:
+                self.pressed_key = current_key
+            self.pressed_key_time = time()
+        else:
+            if self.pressed_key is not None and time() - self.pressed_key_time > self.PRESS_TIMEOUT:
+                self.pressed_key = None
+                self.pressed_key_time = None
+        return self.pressed_key
 
 
 
