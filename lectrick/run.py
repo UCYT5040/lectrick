@@ -59,7 +59,7 @@ def visualize_tiles(tiles, turn, visualize_width):
             for line in visualization:
                 while len(line) < current_width:
                     line.append("")
-        if tile.y >= len(visualization):
+        while tile.y >= len(visualization):
             visualization.append(["" for _ in range(current_width)])
         tile_visualization = ""
         if tile.current_input:
