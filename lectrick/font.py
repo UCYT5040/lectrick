@@ -2,7 +2,10 @@ from PIL import ImageFont
 
 from fontTools.ttLib import TTFont
 
-FONT_FILES = ["fonts/NotoSans-Regular.ttf", "fonts/NotoSansSymbols-Regular.ttf", "fonts/NotoSansSymbols2-Regular.ttf"]
+FONT_FILES = ["fonts/NotoSans-Regular.ttf", "fonts/NotoSansSymbols-Regular.ttf", "fonts/NotoSansSymbols2-Regular.ttf",
+              "fonts/NotoColorEmoji - Regular.ttf", "fonts/NotoMusic-Regular.ttf",
+              "fonts/NotoSansMath-Regular.ttf", "fonts/NotoSansSignWriting-Regular.ttf",
+              ]
 FONT_SIZE = 48
 
 # We map fontTools fonts to PIL fonts
