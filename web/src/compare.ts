@@ -18,7 +18,8 @@ export async function compareCharacter(
     character: string,
     shapeName: string
 ): Promise<number> {
-    const shapePath = SHAPES_PATH + character + "/" + shapeName + SHAPES_EXT;
+    const encodedShapeName = encodeURIComponent(shapeName);
+    const shapePath = SHAPES_PATH + character + "/" + encodedShapeName + SHAPES_EXT;
     let imageData;
     try {
         imageData = await fetch(shapePath);
