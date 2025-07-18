@@ -166,6 +166,12 @@ Electricity greater than 0 LE will not be output, and electricity equal to 0 LE 
 Note that electricity is output in both horizontal directions, so you may want to pair this with a one-way wire to
 prevent it from starting a fire.
 
+### CLOCK
+
+<img src="shapes/CLOCK.svg" width="25%" alt="CLOCK"/>
+
+A clock outputs electricity every second.
+
 ## Commands
 
 Before running, make sure you have `uv` installed. If you have Python, grab it with:

@@ -1,7 +1,7 @@
 import sys
 from os import system as os_system
 from platform import system as platform_system
-from time import sleep
+from time import sleep, time
 from typing import Optional
 
 from .map_program import map_program
@@ -22,7 +22,7 @@ COLOR_RESET = "\033[0m"
 
 class ExecutionContext:
     def __init__(self):
-        pass
+        self.start_time = time()
 
     @staticmethod
     def get_pressed_key() -> Optional[int]:
@@ -41,6 +41,10 @@ class ExecutionContext:
                 return None
             finally:
                 termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    def get_time(self):
+        return time() - self.start_time
+
 
 
 def clear_screen():
