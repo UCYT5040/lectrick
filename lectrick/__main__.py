@@ -91,7 +91,7 @@ def map_command(program, output, alternate_engine):
 @option('--visualize-width', default=10, type=int, help='Width of tile names in visualization.')
 @option('--pause', default=0, type=float, help='Pause duration between frames in seconds.')
 @option('--alternate-engine', is_flag=True, help='Alternate engine for character comparison.')
-def run_program(program, visualize, visualize_width, pause):
+def run_program(program, visualize, visualize_width, pause, alternate_engine):
     """Map a program to its corresponding actions."""
     with open(program, 'r', encoding='utf-8') as f:
         result = f.read()
