@@ -157,6 +157,15 @@ Electricity flows horizontally only if the wire also receives vertical electrici
 Electricity flows out of a press detector when the user presses a key. The amount of electricity output depends on the
 key pressed.
 
+### NOT
+
+<img src="shapes/NOT.svg" width="25%" alt="NOT"/>
+
+Electricity greater than 0 LE will not be output, and electricity equal to 0 LE will be output as 255 LE.
+
+Note that electricity is output in both horizontal directions, so you may want to pair this with a one-way wire to
+prevent it from starting a fire.
+
 ## Commands
 
 Before running, make sure you have `uv` installed. If you have Python, grab it with:
