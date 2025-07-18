@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class DoubleTile extends OneWayBase {
+export class DoubleTile extends OneWayBase {
     TILE_TYPE = 'DOUBLE';
     SAMPLE_CHARS = ["×", "✕"];
 

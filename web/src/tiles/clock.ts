@@ -1,6 +1,6 @@
 import {Tile} from './base';
 
-class ClockTile extends Tile {
+export class ClockTile extends Tile {
     TILE_TYPE = 'CLOCK';
     SAMPLE_CHARS = [
         "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", "🕛",

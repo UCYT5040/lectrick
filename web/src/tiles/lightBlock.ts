@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class LightBlockTile extends OneWayBase {
+export class LightBlockTile extends OneWayBase {
     TILE_TYPE = '"LIGHT BLOCK';
     SAMPLE_CHARS = ["⬛", "⯀", "◼", "▮"];
 

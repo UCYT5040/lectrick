@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class NotTile extends OneWayBase {
+export class NotTile extends OneWayBase {
     TILE_TYPE = 'NOT';
     SAMPLE_CHARS = ["≠", "≄", "≉"];
     POWER = 255;

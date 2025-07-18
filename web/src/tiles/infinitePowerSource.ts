@@ -1,6 +1,6 @@
 import {Tile} from './base';
 
-class InfinitePowerSourceTile extends Tile {
+export class InfinitePowerSourceTile extends Tile {
     TILE_TYPE = 'INFINITE POWER SOURCE';
     SAMPLE_CHARS = ["⏻"]
     POWER = 255;

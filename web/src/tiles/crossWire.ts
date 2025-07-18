@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class CrossWireTile extends OneWayBase {
+export class CrossWireTile extends OneWayBase {
     TILE_TYPE = 'CROSS WIRE';
     SAMPLE_CHARS = ["+", "✚"];
 

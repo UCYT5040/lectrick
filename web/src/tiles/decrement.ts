@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class DecrementTile extends OneWayBase {
+export class DecrementTile extends OneWayBase {
     TILE_TYPE = 'DECREMENT';
     SAMPLE_CHARS = ["↓", "⇩", "🡓", "⭣", "🠗", "🡫"];
 

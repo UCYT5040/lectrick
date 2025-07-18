@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class SplitTile extends OneWayBase {
+export class SplitTile extends OneWayBase {
     TILE_TYPE = 'SPLIT';
     SAMPLE_CHARS = ["÷"];
 

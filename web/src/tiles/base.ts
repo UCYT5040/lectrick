@@ -1,4 +1,4 @@
-class Tile {
+export class Tile {
     TILE_TYPE: string;
     SAMPLE_CHARS: string[];
     ctx: ExecutionContext;

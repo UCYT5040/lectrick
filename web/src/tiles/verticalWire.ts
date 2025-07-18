@@ -1,6 +1,6 @@
 import {OneWayBase} from './oneWayBase';
 
-class VerticalWireTile extends OneWayBase {
+export class VerticalWireTile extends OneWayBase {
     TILE_TYPE = 'VERTICAL WIRE';
     SAMPLE_CHARS = ["|"];
 
