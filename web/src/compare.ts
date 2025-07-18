@@ -34,6 +34,19 @@ export async function compareCharacter(
     const imageBlob = await imageData.blob();
     const imageBitmap = await createImageBitmap(imageBlob);
 
+    const shapeCanvas = createCanvas(
+        imageBitmap.width,
+        imageBitmap.height
+    );
+
+    const shapeCtx = shapeCanvas.getContext("2d");
+    if (!shapeCtx) {
+        throw new Error("Canvas context not found");
+    }
+
+    shapeCtx.drawImage(imageBitmap, 0, 0);
+
+    const shapeImageData = shapeCtx.getImageData(0, 0, imageBitmap.width, imageBitmap.height);
 
     const charImage = await getCharacterImage(character);
 
