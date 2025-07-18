@@ -58,10 +58,10 @@ def generate_shapes(generate_each_character):
     generate_shapes_(generate_each_character)
 
 
-def map_command_impl(program, output, return_out=False):
+def map_command_impl(program, output, return_out=False, alternate_engine=False):
     """Map a program to its corresponding actions."""
     with open(program, 'r', encoding='utf-8') as f:
-        result = map_program(f.read())
+        result = map_program(f.read(), alternate_engine=alternate_engine)
     if result:
         if return_out:
             return_str = ""
@@ -79,9 +79,10 @@ def map_command_impl(program, output, return_out=False):
 @lectrick.command('map')
 @argument('program')
 @option('--output', default='mapped_program.csv', help='Output file for the mapped program.')
-def map_command(program, output):
+@option('--alternate-engine', is_flag=True, help='Alternate engine for character comparison.')
+def map_command(program, output, alternate_engine):
     # make it callable from cli and tests
-    map_command_impl(program, output, return_out=False)
+    map_command_impl(program, output, return_out=False, alternate_engine=alternate_engine)
 
 
 @lectrick.command('run')
@@ -89,12 +90,14 @@ def map_command(program, output):
 @option('--visualize', is_flag=True, help='Visualize the program execution.')
 @option('--visualize-width', default=10, type=int, help='Width of tile names in visualization.')
 @option('--pause', default=0, type=float, help='Pause duration between frames in seconds.')
+@option('--alternate-engine', is_flag=True, help='Alternate engine for character comparison.')
 def run_program(program, visualize, visualize_width, pause):
     """Map a program to its corresponding actions."""
     with open(program, 'r', encoding='utf-8') as f:
         result = f.read()
     if result:
-        run_program_(result, visualize=visualize, visualize_width=visualize_width, pause=pause)
+        run_program_(result, visualize=visualize, visualize_width=visualize_width, pause=pause,
+                     alternate_engine=alternate_engine)
         print("Program executed successfully.")
 
 

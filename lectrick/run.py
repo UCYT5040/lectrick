@@ -90,8 +90,8 @@ def execute_frame(tiles, turn, execution_context, visualize, visualize_width):
     if visualize: visualize_tiles(tiles, turn, visualize_width)
 
 
-def run_program(program, visualize, visualize_width, pause):
-    mapped_program = map_program(program)
+def run_program(program, visualize, visualize_width, pause, alternate_engine):
+    mapped_program = map_program(program, alternate_engine)
     tiles = []
     for y, row in enumerate(mapped_program):
         for x, tile_type in enumerate(row):
