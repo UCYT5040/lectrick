@@ -7,20 +7,20 @@ class ClockTile extends Tile {
         "🕜", "🕝", "🕞", "🕟", "🕠", "🕡", "🕢", "🕣", "🕤", "🕥", "🕦", "🕧"
     ]
     POWER = 255;
-    last_time: number | null;
+    lastTime: number | null;
 
     constructor(ctx: ExecutionContext, x: number, y: number) {
         super(ctx, x, y);
-        this.last_time = null;
+        this.lastTime = null;
     }
 
     startTurn() {
-        const currentTime = this.ctx.get_time();
-        if (!this.last_time) {
-            this.last_time = currentTime;
+        const currentTime = this.ctx.getTime();
+        if (!this.lastTime) {
+            this.lastTime = currentTime;
             return;
         }
-        if (currentTime - this.last_time >= 1000) {
+        if (currentTime - this.lastTime >= 1000) {
             for (let dx = 0; dx < 2; dx++) {
                 for (let dy = 0; dy < 2; dy++) {
                     if ((dx == 0 && dy == 0) || (dx != 0 && dy != 0)) {
@@ -28,7 +28,7 @@ class ClockTile extends Tile {
                     }
                     const targetX = this.x + dx;
                     const targetY = this.y + dy;
-                    const targetTile = this.ctx.get_tile(targetX, targetY);
+                    const targetTile = this.ctx.getTile(targetX, targetY);
                     if (targetTile) {
                         targetTile.acceptEnergy(this.POWER, this.x, this.y);
                     }

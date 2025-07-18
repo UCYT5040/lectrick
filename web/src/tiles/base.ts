@@ -5,15 +5,15 @@ class Tile {
     x: number;
     y: number;
     tiles: Tile[];
-    pending_input: any | null;
-    current_input: any | null;
+    pendingInput: any | null;
+    currentInput: any | null;
 
     constructor(ctx: ExecutionContext, x: number, y: number) {
         this.ctx = ctx;
         this.x = x;
         this.y = y;
-        this.pending_input = null;
-        this.current_input = null;
+        this.pendingInput = null;
+        this.currentInput = null;
     }
 
     equals(other: Tile | [number, number]): boolean {

@@ -3,8 +3,8 @@ import {Tile} from "./tile";
 type Input = [number, number, number]; // [amount, x, y]
 
 class OneWayBase extends Tile {
-    pending_input: Input | null;
-    current_input: Input | null;
+    pendingInput: Input | null;
+    currentInput: Input | null;
 
     acceptanceFilter(x: number, y: number): boolean {
         return true // Overridden in subclasses
@@ -14,14 +14,14 @@ class OneWayBase extends Tile {
         if (!this.acceptanceFilter(x, y)) {
             return;
         }
-        if (this.pending_input !== null) {
+        if (this.pendingInput !== null) {
             this.ctx.startFire();
             return
         }
     }
 
     advanceTurn(): void {
-        this.current_input = this.pending_input;
-        this.pending_input = null;
+        this.currentInput = this.pendingInput;
+        this.pendingInput = null;
     }
 }
