@@ -15,7 +15,7 @@ import {PressDetector} from "./tiles/pressDetector";
 import {SplitTile} from "./tiles/split";
 import {VerticalWireTile} from "./tiles/verticalWire";
 
-const TILES_LIST = [
+export const TILES_LIST = [
     ClockTile,
     ConditionalHorizontalWireTile,
     CrossWireTile,
