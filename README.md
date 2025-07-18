@@ -195,7 +195,7 @@ pip install uv
 ### Run
 
 ```bash
-uv run lectrick run <file>
+uv run main run <file>
 ```
 
 Add `--visualize` to visualize the program as it runs. You’ll probably want to adjust the size of tile names with
@@ -212,7 +212,7 @@ Note that `--pause` pauses 3 times per turn.
 Generate a map of the actions in a file. This is useful to visualize the actions and characters in a file.
 
 ```bash
-uv run lectrick map <file>
+uv run main map <file>
 ```
 
 ### Lookup
@@ -220,7 +220,7 @@ uv run lectrick map <file>
 Check what action matches a character:
 
 ```bash
-uv run lectrick lookup "<character>"
+uv run main lookup "<character>"
 ```
 
 Add the `--generate-overlays` flag to generate images in the `overlays` directory. This is useful to visualize why a
@@ -231,7 +231,7 @@ character is not working as expected.
 Check what characters match an action:
 
 ```bash
-uv run lectrick reverse-lookup "<action>"
+uv run main reverse-lookup "<action>"
 ```
 
 Use the `--char-range <range>` to specify a range of characters to search through (like `--char-range 32-126` for all
@@ -246,7 +246,7 @@ This command generates shapes for each tile. It is neccessary for the comparison
 generates the SVGs used in the documentation.
 
 ```bash
-uv run lectrick generate-shapes
+uv run main generate-shapes
 ```
 
 ### CHR/ORD
@@ -254,8 +254,8 @@ uv run lectrick generate-shapes
 Convert between characters and their ordinal values.
 
 ```bash
-uv run lectrick chr <ordinal>
-uv run lectrick ord <character>
+uv run main chr <ordinal>
+uv run main ord <character>
 ```
 
 ### Watch
@@ -265,5 +265,5 @@ Watch a file for changes and print it’s contents.
 Note: This command does not actually run the program.
 
 ```bash
-uv run lectrick watch <file>
+uv run main watch <file>
 ```
