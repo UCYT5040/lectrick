@@ -144,6 +144,12 @@ If the value goes below 0 or above 255, it will be overflow, wrapping around to 
 
 <img src="shapes/DECREMENT.svg" width="25%" alt="DECREMENT" />
 
+### CONDITIONAL HORIZONTAL WIRE
+
+<img src="shapes/CONDITIONAL%20HORIZONTAL%20WIRE.svg" width="25%" alt="CONDITIONAL HORIZONTAL WIRE"/>
+
+Electricity flows horizontally only if the wire also receives vertical electricity (top or bottom) that turn.
+
 ## Commands
 
 Before running, make sure you have `uv` installed. If you have Python, grab it with:
