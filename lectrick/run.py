@@ -101,13 +101,16 @@ def visualize_tiles(tiles, turn, visualize_width):
 def execute_frame(tiles, turn, execution_context, visualize, visualize_width):
     for tile in tiles:
         tile.start_turn(execution_context)
-    if visualize: visualize_tiles(tiles, turn, visualize_width)
+    if visualize:
+        visualize_tiles(tiles, turn, visualize_width)
     for tile in tiles:
         tile.end_turn(execution_context)
-    if visualize: visualize_tiles(tiles, turn, visualize_width)
+    if visualize:
+        visualize_tiles(tiles, turn, visualize_width)
     for tile in tiles:
         tile.advance_turn(execution_context)
-    if visualize: visualize_tiles(tiles, turn, visualize_width)
+    if visualize:
+        visualize_tiles(tiles, turn, visualize_width)
 
 
 def run_program(program, visualize, visualize_width, pause, alternate_engine):

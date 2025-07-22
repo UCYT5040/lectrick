@@ -1,12 +1,16 @@
-from typing import Union
+from typing import Union, Tuple, List, TypeAlias, Literal
 
 from .compare import compare_character
 from .tiles import list_tile_types
 
 DIRECTORY = 'shapes'
 
-type CharRangePart = Union[tuple[int, int], int]
-type CharRange = Union[list[CharRangePart], CharRangePart, "clean"]
+# Cannot use `type` alias statement on Python 3.11 (syntax was added in Python 3.12)
+# type CharRangePart = Union[tuple[int, int], int]
+# type CharRange = Union[list[CharRangePart], CharRangePart, "clean"]
+
+CharRangePart: TypeAlias = Union[Tuple[int, int], int]
+CharRange: TypeAlias = Union[List[CharRangePart], CharRangePart, Literal["clean"]]
 
 CHAR_RANGES = {  # Do not include invisible characters (but may include unassigned characters)
     "clean": [

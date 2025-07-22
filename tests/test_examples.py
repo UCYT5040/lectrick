@@ -2,10 +2,9 @@ import logging
 import sys
 
 try:
-    import pytest
     from lectrick.__main__ import map_command_impl
 except ModuleNotFoundError:
-    print("Please install pytest and lectrick.")
+    print("Please install lectrick.")
     sys.exit(1)
 
 log = logging.getLogger(__name__)
