@@ -1,11 +1,8 @@
 import logging
 import sys
-import io
 
 try:
     import pytest
-    import pandas as pd
-    from tabulate import tabulate
     from lectrick.__main__ import map_command_impl
 except ModuleNotFoundError:
     print("Please install lectrick[test].")
