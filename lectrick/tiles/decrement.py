@@ -3,7 +3,7 @@ from .one_way_base import OneWayTile
 
 class Decrement(OneWayTile):
     TILE_TYPE = "DECREMENT"
-    SAMPLE_CHARS = ["↓", "⇩", "🡓", "⭣", "🠗", "🡫"]
+    SAMPLE_CHARS = ["↓", "🡓", "⭣", "🠗", "🡫"]
 
     def __init__(self, x, y, tiles):
         super().__init__(x, y, tiles)
