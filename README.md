@@ -61,6 +61,12 @@ Outputs a character every second, unless the user presses a key, in which case i
 
 ![Program with annotations explaining how it works](examples/quiet.png)
 
+### `examples/press`
+
+Prints the key pressed by the user.
+
+![Program with annotations explaining how it works](examples/press.png)
+
 ## Actions
 
 ### What do these images mean?
