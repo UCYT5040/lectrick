@@ -1,6 +1,6 @@
 import {Tile} from './base';
 
-class OneWayLeftTile extends Tile {
+export class OneWayLeftTile extends Tile {
     TILE_TYPE = 'ONE WAY LEFT';
     SAMPLE_CHARS = ["<"];
 

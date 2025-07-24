@@ -2,7 +2,7 @@ import {Tile} from "./base";
 
 export type Input = [number, number, number]; // [amount, x, y]
 
-class OneWayBase extends Tile {
+export class OneWayBase extends Tile {
     pendingInput: Input | null;
     currentInput: Input | null;
 

@@ -1,6 +1,6 @@
 import {Tile} from './base';
 
-class PressDetector extends Tile {
+export class PressDetector extends Tile {
     TILE_TYPE = 'PRESS DETECTOR';
     SAMPLE_CHARS = ["␣"];
 

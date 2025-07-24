@@ -1,4 +1,4 @@
-import {getCharacterImage} from "./characterImage";
+import {getCharacterImage} from "./charImage";
 import {createCanvas} from "./canvas";
 
 const SHAPES_PATH = "copied/shapes/";
@@ -18,7 +18,8 @@ export async function compareCharacter(
     character: string,
     shapeName: string
 ): Promise<number> {
-    const shapePath = SHAPES_PATH + character + "/" + shapeName + SHAPES_EXT;
+    const encodedShapeName = encodeURIComponent(shapeName);
+    const shapePath = SHAPES_PATH + character + "/" + encodedShapeName + SHAPES_EXT;
     let imageData;
     try {
         imageData = await fetch(shapePath);
@@ -33,6 +34,19 @@ export async function compareCharacter(
     const imageBlob = await imageData.blob();
     const imageBitmap = await createImageBitmap(imageBlob);
 
+    const shapeCanvas = createCanvas(
+        imageBitmap.width,
+        imageBitmap.height
+    );
+
+    const shapeCtx = shapeCanvas.getContext("2d");
+    if (!shapeCtx) {
+        throw new Error("Canvas context not found");
+    }
+
+    shapeCtx.drawImage(imageBitmap, 0, 0);
+
+    const shapeImageData = shapeCtx.getImageData(0, 0, imageBitmap.width, imageBitmap.height);
 
     const charImage = await getCharacterImage(character);
 

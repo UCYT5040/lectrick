@@ -1,7 +1,7 @@
 import {Tile} from './base';
 import {Input} from './oneWayBase';
 
-class ConditionalHorizontalWireTile extends Tile {
+export class ConditionalHorizontalWireTile extends Tile {
     TILE_TYPE = 'CONDITIONAL HORIZONTAL WIRE';
     SAMPLE_CHARS = [
         "T"
