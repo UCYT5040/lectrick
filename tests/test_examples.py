@@ -10,7 +10,7 @@ except ModuleNotFoundError:
 
 log = logging.getLogger(__name__)
 
-example_paths = ["examples/chars", "examples/hello", "examples/quiet"]
+example_paths = ["examples/chars", "examples/hello", "examples/quiet", "examples/press"]
 
 @pytest.mark.parametrize("program_path", example_paths)
 def test_example(program_path):    
